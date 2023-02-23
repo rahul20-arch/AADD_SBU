@@ -55,8 +55,8 @@ public class DriverIntialization {
 
 	public static void ExtentReport() throws IOException {
 		extent = new ExtentReports();
-		htmlreporter = new ExtentHtmlReporter("C:\\Users\\hp\\eclipse-workspace\\QDMS-AUTOMATION\\src\\test\\resources\\report\\report.html");
-
+		htmlreporter = new ExtentHtmlReporter("C:\\Users\\hp\\eclipse-workspace\\AddSbu\\src\\test\\resources\\report\\extentreport.html");
+		
 		extent.attachReporter(htmlreporter);
 	}
 
