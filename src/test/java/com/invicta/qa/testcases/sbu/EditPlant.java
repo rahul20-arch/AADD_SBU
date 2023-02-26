@@ -44,6 +44,9 @@ public class EditPlant extends DriverIntialization {
     
 	private static final String Expect = null;
 	static String fieldValue = "";
+//********************************************************************************************************
+//                          THE METHOD IS FOR GENERATING REPORT 
+//********************************************************************************************************	
 	public static void TestCasePrint(String TestCaseName, String expectedValue, String actualValue) {
 		boolean position = true;
 		ExtentTest testCase = extent.createTest(TestCaseName);
@@ -65,47 +68,98 @@ public class EditPlant extends DriverIntialization {
 		}
 
 	}
+//********************************************************************************************************
+//********************************************************************************************************
        
 	@Test
 	public static void clickeditplant() throws InterruptedException, IOException {
-		// THIS METHOD IS FOR LOGIN
+//********************************************************************************************************		
+// THIS METHOD IS FOR LOGIN AND CLICKING THE MASTER 
+//********************************************************************************************************		
 		Loginpg.login();
-		// From master to edit plant
+		Thread.sleep(4000);
+//********************************************************************************************************	
+		
+		
+//********************************************************************************************************		
+//	                                  AFTER CLICKING MASTER TO PLANT
+//********************************************************************************************************		
 		EditPlantPage editplantpg = new EditPlantPage();
 		PageFactory.initElements(driver, editplantpg);
 		Thread.sleep(3000);
-		EditPlantPage.clickplant.click();
+		FinaleditPlant.search();
+//		EditPlantPage.clickplant.click();
 		Thread.sleep(3000);
+		
+//********************************************************************************************************		
+//                                   STEP-02 -- CHECKING EDIT PLANT ICON 	
+//********************************************************************************************************		
+		testCase = extent.createTest("CHECKING UI OF EDIT ICON");
+		boolean Value1 = EditPlantPage.EditPlantIcon.isDisplayed();
+
+		if (Value1) {
+
+			try {
+				boolean Value = EditPlantPage.EditPlantIcon.isDisplayed();
+				// Thread.sleep(2000);
+				TestCasePrint("VISIBILITY", "true", String.valueOf(Value));
+			} catch (Exception e) {
+				TestCasePrint("VISIBILITY", "true", String.valueOf(e));
+			}
+		
+		try {
+			boolean value = EditPlantPage.EditPlantIcon.isEnabled();
+
+			TestCasePrint("EDIT ICON ENABLE", "true", String.valueOf(value));
+		} catch (Exception e) {
+			TestCasePrint("EDIT ICON ENABLE", "true", String.valueOf(e));
+
+		}
 		EditPlantPage.EditPlantIcon.click();
+		} else {
+			TestCasePrint("ICON IS NOT DISPLAYED", "true", String.valueOf(Value1));
+		}
 		
 //*******************************************get the text in disabled field****************************************************
-		String fieldValue = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].value;", EditPlantPage.mandatory);
-		System.out.println("disabled " + fieldValue);
+//		String fieldValue = (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].value;", EditPlantPage.mandatory);
+//		System.out.println("disabled " + fieldValue);
 //*********************************************************************************************************************************
 
-		// checking mandatory and get report
+//*********************************************************************************************************************************		
+// checking mandatory and get report
+//*********************************************************************************************************************************		
 		checkfirstfield();
+
+//*********************************************************************************************************************************	
+//*********************************************************************************************************************************		
+// checking mandatory and get report
+//*********************************************************************************************************************************		
 		PlantNameEdit();
 		checkUpdateButton();
 		ClickUpdateButton();
 	//	confirmUpdate();
-
+		logout();
 	}
-
+	
+//*****************************************************************************************************************************	
+//							STEP-03 -- CHECK THE MANDATORY FILED IS DISABLED 
+//	***************************************************************************************************************************
+	
 	public static void checkfirstfield() throws InterruptedException, IOException {
 		// test Enabled
 		try {
 			boolean value = EditPlantPage.mandatory.isEnabled();
 
-			TestCasePrint("First field is disbaled", "false", String.valueOf(value));
+			TestCasePrint("STEP-03 -- CHECK THE MANDATORY FILED IS DISABLED  ", "false", String.valueOf(value));
 		} catch (Exception e) {
-			TestCasePrint("First field is disbaled", "false", String.valueOf(e));
+			TestCasePrint("STEP-03 -- CHECK THE MANDATORY FILED IS DISABLED", "false", String.valueOf(e));
 
 		}
 
 	}
-
-	// Edit all the field
+//*****************************************************************************************************************************	
+// 												EDIT THE PLANT NAME 
+//*****************************************************************************************************************************		
 	public static void PlantNameEdit() throws InterruptedException, IOException {
 		// Thread.sleep(4000);
 //		EditPlant_page editplantpg = new EditPlant_page();
@@ -138,70 +192,73 @@ public class EditPlant extends DriverIntialization {
 		EditPlantPage.plantname.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
 		EditPlantPage.plantname.sendKeys("RMC Balangoda Plant");
 		}catch(Exception e) {
-			testCase = extent.createTest("Plant name did not went");
+			testCase = extent.createTest("PLANT NAME IS NOT WENT");
 		}
-		// for address
-		try {
-		EditPlantPage.Address.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-		EditPlantPage.Address.sendKeys("No.4,Kokkuvil,Jaffna");
-		}catch(Exception e) {
-			testCase = extent.createTest("Address did not went");
-		}
-		// for Contact No
-		try {
-		EditPlantPage.ContactNo.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-		EditPlantPage.ContactNo.sendKeys("0766450923");
-		}catch(Exception e) {
-			testCase = extent.createTest("Contact No did not went");
-		}
-		// for fax
-		try {
-		EditPlantPage.fax.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-		EditPlantPage.fax.sendKeys("9466450921");
-		}catch(Exception e) {
-			testCase = extent.createTest("Fax did not went");
-		}
-		Thread.sleep(2000);
-		// for SubBusiness drop down
-		try {
-		EditPlantPage.ClickSubBusinessUnitDropDown.click();
-		}catch(Exception e) {
-			testCase = extent.createTest("Sub Business Unit Dropdown selection wrong ");
-		}
-		Thread.sleep(2000);
-		try {
-		EditPlantPage.SelectSubBusiness.click();
-		}catch(Exception e) {
-			testCase = extent.createTest("Sub Business Unit Dropdown selection wrong ");
-		}
-		// for plant manager
-		Thread.sleep(2000);
-		try {
-		EditPlantPage.PlantManagerDropDown.click();
-		}catch(Exception e) {
-			testCase = extent.createTest("Plant manager Dropdown selection wrong");
-		}
-		Thread.sleep(2000);
-		try {
-		EditPlantPage.SelectPlantManager.click();
-		}catch(Exception e) {
-			testCase = extent.createTest("Plant manager Dropdown selection wrong");
-		}
-		Thread.sleep(2000);
-		// for description
-		try {
-		EditPlantPage.Description.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
-		Thread.sleep(2000);
-		EditPlantPage.Description.sendKeys("RMC Jaffna Plant");
-		}catch(Exception e) {
-			testCase = extent.createTest("Description did not went");
-		}
+//		// for address
+//		try {
+//		EditPlantPage.Address.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+//		EditPlantPage.Address.sendKeys("No.4,Kokkuvil,Jaffna");
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Address did not went");
+//		}
+//		// for Contact No
+//		try {
+//		EditPlantPage.ContactNo.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+//		EditPlantPage.ContactNo.sendKeys("0766450923");
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Contact No did not went");
+//		}
+//		// for fax
+//		try {
+//		EditPlantPage.fax.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+//		EditPlantPage.fax.sendKeys("9466450921");
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Fax did not went");
+//		}
+//		Thread.sleep(2000);
+//		// for SubBusiness drop down
+//		try {
+//		EditPlantPage.ClickSubBusinessUnitDropDown.click();
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Sub Business Unit Dropdown selection wrong ");
+//		}
+//		Thread.sleep(2000);
+//		try {
+//		EditPlantPage.SelectSubBusiness.click();
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Sub Business Unit Dropdown selection wrong ");
+//		}
+//		// for plant manager
+//		Thread.sleep(2000);
+//		try {
+//		EditPlantPage.PlantManagerDropDown.click();
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Plant manager Dropdown selection wrong");
+//		}
+//		Thread.sleep(2000);
+//		try {
+//		EditPlantPage.SelectPlantManager.click();
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Plant manager Dropdown selection wrong");
+//		}
+//		Thread.sleep(2000);
+//		// for description
+//		try {
+//		EditPlantPage.Description.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+//		Thread.sleep(2000);
+//		EditPlantPage.Description.sendKeys("RMC Jaffna Plant");
+//		}catch(Exception e) {
+//			testCase = extent.createTest("Description did not went");
+//		}
 
 	}
-// This method is for Update button UI
+//*************************************************************************************************************
+//									STEP-04-CHECKING UI OF UPDATE BUTTON"	
+//*************************************************************************************************************
+
 	public static void checkUpdateButton() throws InterruptedException, IOException {
 
-		testCase = extent.createTest("STEP-01-CHECKING UI OF UPDATE BUTTON");
+		testCase = extent.createTest("STEP-04-CHECKING UI OF UPDATE BUTTON");
 		boolean Value1 = EditPlantPage.UpdateButton.isDisplayed();
 
 		if (Value1) {
@@ -209,141 +266,147 @@ public class EditPlant extends DriverIntialization {
 			try {
 				boolean Value = EditPlantPage.UpdateButton.isDisplayed();
 				// Thread.sleep(2000);
-				TestCasePrint("1. FUNCTIONALITY - visibility", "true", String.valueOf(Value));
+				TestCasePrint("1)UPDATE BUTTON IS DISPLAYED", "true", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("1. FUNCTIONALITY - visibility", "true", String.valueOf(e));
+				TestCasePrint("1)UPDATE BUTTON IS DISPLAYED", "true", String.valueOf(e));
 			}
 
 			try {
 				boolean Value = EditPlantPage.UpdateButton.isEnabled();
 				// Thread.sleep(2000);
-				TestCasePrint("2. FUNCTIONALITY - enability", "true", String.valueOf(Value));
+				TestCasePrint("2)UPDATE BUTTON IS ENABLED", "true", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("2.FUNTIONALITY - enability", "true", String.valueOf(e));
+				TestCasePrint("2)UPDATE BUTTON IS ENABLED", "true", String.valueOf(e));
 			}
 
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("background-color");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("3. UI - background-color", "rgba(0, 19, 40, 1)", String.valueOf(Value));
+				TestCasePrint("3)UPDATE BUTTON background-color", "rgba(0, 19, 40, 1)", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("3.UI - background-color", "rgba(0, 19, 40, 1)", String.valueOf(e));
+				TestCasePrint("3)UPDATE BUTTON background-color", "rgba(0, 19, 40, 1)", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("padding");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("4. UI - padding", "4px 15px", String.valueOf(Value));
+				TestCasePrint("4)UPDATE BUTTON UI - padding", "4px 15px", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("4.UI - padding", "4px 15px", String.valueOf(e));
+				TestCasePrint("4)UPDATE BUTTON UI - padding", "4px 15px", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("font-family");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("5. UI - font-family", "Roboto, sans-serif", String.valueOf(Value));
+				TestCasePrint("5)UPDATE BUTTON UI - font-family", "Roboto, sans-serif", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("5.UI - font-family", "Roboto, sans-serif", String.valueOf(e));
+				TestCasePrint("5)UPDATE BUTTON UI - font-family", "Roboto, sans-serif", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("color");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("6. UI - color", "rgba(255, 255, 255, 1)", String.valueOf(Value));
+				TestCasePrint("6)UPDATE BUTTON UI - color", "rgba(255, 255, 255, 1)", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("6.UI - color", "rgba(255, 255, 255, 1)", String.valueOf(e));
+				TestCasePrint("6)UPDATE BUTTON UI - color", "rgba(255, 255, 255, 1)", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("font-size");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("7. UI - font-size", "14px", String.valueOf(Value));
+				TestCasePrint("7)UPDATE BUTTON  UI - font-size", "14px", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("7.UI - font-size", "14px", String.valueOf(e));
+				TestCasePrint("7)UPDATE BUTTON UI - font-size", "14px", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("border-radius");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("8. UI -border-radius", "2px", String.valueOf(Value));
+				TestCasePrint("8)UPDATE BUTTON UI -border-radius", "2px", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("8.UI - border-radius", "2px", String.valueOf(e));
+				TestCasePrint("8)UPDATE BUTTON UI - border-radius", "2px", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("border-color");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("9. UI -border-color", "rgb(255, 255, 255)", String.valueOf(Value));
+				TestCasePrint("9)UPDATE BUTTON  UI -border-color", "rgb(255, 255, 255)", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("9.UI -border-color", "rgb(255, 255, 255)", String.valueOf(e));
+				TestCasePrint("9)UPDATE BUTTON UI -border-color", "rgb(255, 255, 255)", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("box-shadow");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("10. UI -box-shadow", "rgba(0, 0, 0, 0.016) 0px 2px 0px 0px", String.valueOf(Value));
+				TestCasePrint("10)UPDATE BUTTON UI -box-shadow", "rgba(0, 0, 0, 0.016) 0px 2px 0px 0px", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("10.UI - box-shadow", "rgba(0, 0, 0, 0.016) 0px 2px 0px 0px", String.valueOf(e));
+				TestCasePrint("10)UPDATE BUTTON UI - box-shadow", "rgba(0, 0, 0, 0.016) 0px 2px 0px 0px", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("font-weight");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("11. UI -font-weight", "400", String.valueOf(Value));
+				TestCasePrint("11)UPDATE BUTTON  UI -font-weight", "400", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("11.UI - font-weight", "400", String.valueOf(e));
+				TestCasePrint("11)UPDATE BUTTON UI - font-weight", "400", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("cursor");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("12. UI -cursor", "pointer", String.valueOf(Value));
+				TestCasePrint("12)UPDATE BUTTON UI -cursor", "pointer", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("12.UI - cursor", "pointer", String.valueOf(e));
+				TestCasePrint("12)UPDATE BUTTON UI - cursor", "pointer", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getCssValue("opacity");
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("13. UI -opacity", "1", String.valueOf(Value));
+				TestCasePrint("13)UPDATE BUTTON UI -opacity", "1", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("13.UI -opacity", "1", String.valueOf(e));
+				TestCasePrint("13)UPDATE BUTTON UI -opacity", "1", String.valueOf(e));
 			}
 			try {
 				String Value = EditPlantPage.UpdateButton.getText();
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("14. UI -text spelling", "Update", String.valueOf(Value));
+				TestCasePrint("14)UPDATE BUTTON UI -text spelling", "Update", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("14.UI -text spelling", "Update", String.valueOf(e));
+				TestCasePrint("14)UPDATE BUTTON UI -text spelling", "Update", String.valueOf(e));
 			}
 			try {
 				Dimension Value = EditPlantPage.UpdateButton.getSize();
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("15. UI -Size", "(74, 32)", String.valueOf(Value));
+				TestCasePrint("15)UPDATE BUTTON UI -Size", "(74, 32)", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("15.UI -Size", "(74, 32)", String.valueOf(e));
+				TestCasePrint("15)UPDATE BUTTON UI -Size", "(74, 32)", String.valueOf(e));
 			}
 
 			try {
 				Point Value = EditPlantPage.UpdateButton.getLocation();
 				System.out.println(Value);
 				// Thread.sleep(2000);
-				TestCasePrint("16. UI -position", "(887, 670)", String.valueOf(Value));
+				TestCasePrint("16)UPDATE BUTTON  UI -position", "(887, 670)", String.valueOf(Value));
 			} catch (Exception e) {
-				TestCasePrint("16.UI -position", "(887, 670)", String.valueOf(e));
+				TestCasePrint("16)UPDATE BUTTON UI -position", "(887, 670)", String.valueOf(e));
 			}
 
 		} else {
-			TestCasePrint("Element not displayed", "true", String.valueOf(Value1));
+			TestCasePrint("ELEMENT IS NOT DIPLAYED", "true", String.valueOf(Value1));
 		}
 
 	}
+//*************************************************************************************************************
+	
 	public static void ClickUpdateButton() throws InterruptedException,IOException{
+		try {
 		EditPlantPage.UpdateButton.click();
-		testCase = extent.createTest("CONFIRM THE CLICKED UPDATE BUTTON");
+		testCase = extent.createTest("STEP-05 --CONFIRM THE CLICKED UPDATE BUTTON");
+		}catch (Exception e) {
+			testCase = extent.createTest("STEP-05--UPDATE BUTTON DID NOT CLICKED");
+		}
 	}
 
 //	public static void confirmUpdate() throws InterruptedException,IOException {
@@ -361,21 +424,18 @@ public class EditPlant extends DriverIntialization {
 //			TestCasePrint("confirm Update",Expect, String.valueOf(e));
 //		}	
 //	}
-//	public static void confirmUpdate() throws InterruptedException,IOException {
-//		Thread.sleep(2000);
-//		EditPlantPage.EditPlantIcon.click();
-//	//	String Edit =EditPlantPage.plantname.getText();
-//	//	System.out.println("confirm : " +Edit);
-//		
-//		try {
-//			String Value = EditPlantPage.plantname.getText();
-//			System.out.println(Value);
-//			// Thread.sleep(2000);
-//			TestCasePrint("EDIT CONFIRM", "RMC Balangoda Plant", String.valueOf(Value));
-//		} catch (Exception e) {
-//			TestCasePrint("EDIT CONFIRM", "RMC Balangoda Plant", String.valueOf(e));
-//		}
-//
+
+
+	
+	// Quits the browser and closes all the windows
+	public static void logout() throws InterruptedException,IOException{
+//		Thread.sleep(3000);
+//		EditPlantPage.admin.click();
+//		Thread.sleep(3000);
+//		EditPlantPage.logout.click();
+		driver.quit();
+	}
+		
 //	}
 }
 

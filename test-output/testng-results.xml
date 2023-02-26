@@ -1,53 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="1" total="1" passed="0" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-02-23T10:47:12Z" name="Default suite" finished-at="2023-02-23T10:48:02Z" duration-ms="50514">
+  <suite started-at="2023-02-26T15:55:54Z" name="Default suite" finished-at="2023-02-26T15:55:54Z" duration-ms="18">
     <groups>
     </groups>
-    <test started-at="2023-02-23T10:47:12Z" name="Default test" finished-at="2023-02-23T10:48:02Z" duration-ms="50514">
-      <class name="com.invicta.qa.testcases.sbu.Plantwisepagination">
-        <test-method is-config="true" signature="main()[pri:0, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:03Z" name="main" finished-at="2023-02-23T10:47:12Z" duration-ms="9360" status="PASS">
+    <test started-at="2023-02-26T15:55:54Z" name="Default test" finished-at="2023-02-26T15:55:54Z" duration-ms="18">
+      <class name="com.invicta.qa.testcases.sbu.FinaleditPlant">
+        <test-method is-config="true" signature="main()[pri:0, instance:com.invicta.qa.testcases.sbu.FinaleditPlant@12b5454f]" started-at="2023-02-26T15:55:20Z" name="main" finished-at="2023-02-26T15:55:54Z" duration-ms="34541" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- main -->
-        <test-method signature="UnitPagination()[pri:0, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:12Z" name="UnitPagination" finished-at="2023-02-23T10:47:25Z" duration-ms="13314" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- UnitPagination -->
-        <test-method signature="DefaultIndexPage()[pri:1, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:25Z" name="DefaultIndexPage" finished-at="2023-02-23T10:47:27Z" duration-ms="2143" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- DefaultIndexPage -->
-        <test-method signature="RefreshDefaultPage()[pri:2, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:27Z" name="RefreshDefaultPage" finished-at="2023-02-23T10:47:51Z" duration-ms="23318" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- RefreshDefaultPage -->
-        <test-method signature="PageRedrict()[pri:3, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:51Z" name="PageRedrict" finished-at="2023-02-23T10:47:53Z" duration-ms="2125" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- PageRedrict -->
-        <test-method signature="PreButtonDispaly()[pri:4, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:53Z" name="PreButtonDispaly" finished-at="2023-02-23T10:47:53Z" duration-ms="43" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- PreButtonDispaly -->
-        <test-method signature="NextButtonDispaly()[pri:5, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:53Z" name="NextButtonDispaly" finished-at="2023-02-23T10:47:53Z" duration-ms="42" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NextButtonDispaly -->
-        <test-method signature="NextButtonEanble()[pri:6, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:53Z" name="NextButtonEanble" finished-at="2023-02-23T10:47:58Z" duration-ms="4694" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- NextButtonEanble -->
-        <test-method signature="AfterMovetoSecPagepreButEnable()[pri:8, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:47:58Z" name="AfterMovetoSecPagepreButEnable" finished-at="2023-02-23T10:48:02Z" duration-ms="4748" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- AfterMovetoSecPagepreButEnable -->
-        <test-method is-config="true" signature="closeChrome()[pri:0, instance:com.invicta.qa.testcases.sbu.Plantwisepagination@9a6fbc0]" started-at="2023-02-23T10:48:02Z" name="closeChrome" finished-at="2023-02-23T10:48:03Z" duration-ms="500" status="PASS">
+        <test-method is-config="true" signature="closeChrome()[pri:0, instance:com.invicta.qa.testcases.sbu.FinaleditPlant@12b5454f]" started-at="2023-02-26T15:55:55Z" name="closeChrome" finished-at="2023-02-26T15:55:55Z" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeChrome -->
-      </class> <!-- com.invicta.qa.testcases.sbu.Plantwisepagination -->
+      </class> <!-- com.invicta.qa.testcases.sbu.FinaleditPlant -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

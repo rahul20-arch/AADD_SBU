@@ -7,12 +7,23 @@ import org.openqa.selenium.support.FindBy;
 import net.bytebuddy.implementation.bind.annotation.Default;
 
 public class EditPlantPage {
+	
+//	@FindBy(xpath = "//th[2]//div[1]//span[2]")
+//	public static WebElement search;
+	@FindBy(xpath = "//span[@class='ant-dropdown-trigger ant-table-filter-trigger ant-dropdown-open']")
+	public static WebElement search;
  
 	@FindBy(xpath = "/html/body/div[1]/div/section/section/main/div/div/div[1]/div/div[2]")
 	public static WebElement clickplant;
 	
-	@FindBy(xpath = "//tbody/tr[2]/td[9]/span[1]/a[1]/span[1]")
+//	@FindBy(xpath = "//tbody/tr[2]/td[9]/span[1]/a[1]/span[1]")
+//	public static WebElement EditPlantIcon;
+//	@FindBy(xpath = "//tbody/tr[5]/td[9]/span[1]/a[1]/span[1]")
+//	public static WebElement EditPlantIcon;
+	
+	@FindBy(xpath = "//tbody/tr[5]/td[9]/span[1]")
 	public static WebElement EditPlantIcon;
+	
 	
 	@FindBy(xpath = "//input[@id='plant_code']")
 	public static WebElement mandatory;
@@ -51,4 +62,18 @@ public class EditPlantPage {
 	@FindBy(xpath = "//div[@class='ant-modal-body']")
 	public static WebElement modal;
 	
+//	@FindBy(xpath = "//*[@id=\"root\"]/div/section/section/header/ul/div")
+//	public static WebElement admin;
+//	@FindBy(xpath = "//ul[@class='ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-dark']/div/div[2]/div/div/span[@class='ant-tag ant-tag-has-color']")
+//	public static WebElement admin ;
+	
+	@FindBy(xpath = "//ul[@role='menu']//div//span[@class='ant-tag ant-tag-has-color']")
+	public static WebElement admin;
+	@FindBy(xpath = "//tbody/tr[8]/td[5]")
+	public static WebElement logout;
+	
+	@FindBy(xpath = "//button[@class='ant-btn']")
+	public static WebElement cancelbutton;
+	
+
 }

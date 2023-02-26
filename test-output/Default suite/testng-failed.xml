@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.invicta.qa.testcases.sbu.Supplierpage">
+      <class name="com.invicta.qa.testcases.sbu.SingleSearchInPlantWise">
         <methods>
           <include name="closeChrome"/>
-          <include name="TotalPage"/>
+          <include name="login"/>
           <include name="main"/>
         </methods>
-      </class> <!-- com.invicta.qa.testcases.sbu.Supplierpage -->
+      </class> <!-- com.invicta.qa.testcases.sbu.SingleSearchInPlantWise -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

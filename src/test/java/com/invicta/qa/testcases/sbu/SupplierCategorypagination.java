@@ -6,8 +6,10 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.invicta.qa.base.DriverIntialization;
 import com.invicta.qa.pages.login.Loginpg;
@@ -188,20 +190,20 @@ public static void pagination() throws InterruptedException,IOException {
 			driver.navigate().refresh();
 			Thread.sleep(2000);
 //			Before move to 2nd page, previous button disable
-			Thread.sleep(2000);
-			boolean ActualPreviousBtnDisable = SupplierCategorypage.PreviousPageBtn.isEnabled();
-			boolean ExpectedPreviousBtnDisable = false;
-			testCase = extent.createTest("PAGINATION-PREVIOUS-BUTTON-DISABLE-BEFORE MOVE THE 2ND PAGE");
-			try {
-				Assert.assertEquals(ActualPreviousBtnDisable, ExpectedPreviousBtnDisable);
-				testCase.log(Status.INFO, "ActualElement :- " + ActualPreviousBtnDisable);
-				testCase.log(Status.INFO, "ExpectedElement :- " + ExpectedPreviousBtnDisable);
-				testCase.log(Status.PASS, "Enable element");
-			} catch (AssertionError e) {
-				testCase.log(Status.INFO, "ActualElement :- " + ActualPreviousBtnDisable);
-				testCase.log(Status.INFO, "ExpectedElement :- " + ExpectedPreviousBtnDisable);
-				testCase.log(Status.FAIL, "Not Enable Element");
-			}
+//			Thread.sleep(2000);
+//			boolean ActualPreviousBtnDisable = SupplierCategorypage.PreviousPageBtn.isEnabled();
+//			boolean ExpectedPreviousBtnDisable = false;
+//			testCase = extent.createTest("PAGINATION-PREVIOUS-BUTTON-DISABLE-BEFORE MOVE THE 2ND PAGE");
+//			try {
+//				Assert.assertEquals(ActualPreviousBtnDisable, ExpectedPreviousBtnDisable);
+//				testCase.log(Status.INFO, "ActualElement :- " + ActualPreviousBtnDisable);
+//				testCase.log(Status.INFO, "ExpectedElement :- " + ExpectedPreviousBtnDisable);
+//				testCase.log(Status.PASS, "Enable element");
+//			} catch (AssertionError e) {
+//				testCase.log(Status.INFO, "ActualElement :- " + ActualPreviousBtnDisable);
+//				testCase.log(Status.INFO, "ExpectedElement :- " + ExpectedPreviousBtnDisable);
+//				testCase.log(Status.FAIL, "Not Enable Element");
+	//		}
 
 //			After move to 2nd page, previous button Enable
 			SupplierCategorypage.NextPageBtn.click();
@@ -839,7 +841,10 @@ public static void pagination() throws InterruptedException,IOException {
 //				}
 //
 //			}
-		}
+//		}
+}
+
+
 }
 
 

@@ -32,5 +32,11 @@ public class SupplierCategorypage {
 	@FindBy(xpath = "//tbody[@class='ant-table-tbody']/tr/td[1]")
 	public static List<WebElement> UnitColumn;
 	
+	@FindBy(xpath = "//div[@title='20 / page']")
+	public static WebElement when20usernamecolumn;
+	
+	@FindBy(xpath = "//div[contains(text(),'30 / page')]")
+	public static WebElement when30usernamecolumn;
+	
 
 }
